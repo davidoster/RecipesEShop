@@ -1,0 +1,35 @@
+Client
+------
+Create an eshop that sells recipes
+The recipes are using various ingredients
+These ingredients have different sizes or measures
+Every ingredient is used differently upon each recipe
+
+
+Analyst
+-------
+1.a.
+	What is the form of the recipe(selling product)? 
+		Pdf
+1.b.
+	How can a visitor buy a recipe? 
+		Guest, 
+		Subscribed (An area that shows bought recipes), 
+		Admin(Does everything, Be able to buy, Not to be able to see the whole recipe)
+1.c.
+	How many types of users exist and what can they do?
+		Guest (buy without a subscription)
+		Subscribed (buy a recipe .... can he buy twice etc the same recipe)
+		Recipe Creator(Sous Chef) (Admin Level 0, creates a recipe based on ingredients he enters)
+		Recipe Manager(Chef) (Admin Highest Level, enters the details of the recipe)
+		Admin (Recipe Creator + Does everything else)
+
+2.a.
+	Which are the categories of the ingredients
+2.b.
+	What ingredients exist in each category
+2.c.
+	?
+
+3.	Which are the measuring units of each ingredient
+4.	Does each ingredient on each recipe needs to be transformed to another state?
