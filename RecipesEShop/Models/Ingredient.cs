@@ -15,5 +15,11 @@ namespace RecipesEShop.Models
         [Required]
         [StringLength(150)]
         public string Description { get; set; }
+
+        public string CategoryName { get; set; }
+
+        public virtual ICollection<Recipe> Recipes { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }

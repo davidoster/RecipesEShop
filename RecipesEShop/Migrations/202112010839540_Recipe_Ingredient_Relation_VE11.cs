@@ -1,0 +1,18 @@
+namespace RecipesEShop.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class Recipe_Ingredient_Relation_VE11 : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.Recipes", "IngredientName", c => c.String());
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.Recipes", "IngredientName");
+        }
+    }
+}

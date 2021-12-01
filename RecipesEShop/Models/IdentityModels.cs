@@ -22,6 +22,7 @@ namespace RecipesEShop.Models
     {
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Ingredient> Ingredients { get; set; }
+        public virtual DbSet<Recipe> Recipes { get; set; }
 
         public ApplicationDbContext()
             : base("ServerDeveloperConnection", throwIfV1Schema: false)

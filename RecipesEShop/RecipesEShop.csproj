@@ -201,12 +201,30 @@
     <Compile Include="Migrations\202111301509224_IngredientsVE1.Designer.cs">
       <DependentUpon>202111301509224_IngredientsVE1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112010755145_Category_Ingredient_Relation_VE1.cs" />
+    <Compile Include="Migrations\202112010755145_Category_Ingredient_Relation_VE1.Designer.cs">
+      <DependentUpon>202112010755145_Category_Ingredient_Relation_VE1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112010826219_Recipe_Ingredient_Relation_VE1.cs" />
+    <Compile Include="Migrations\202112010826219_Recipe_Ingredient_Relation_VE1.Designer.cs">
+      <DependentUpon>202112010826219_Recipe_Ingredient_Relation_VE1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112010839540_Recipe_Ingredient_Relation_VE11.cs" />
+    <Compile Include="Migrations\202112010839540_Recipe_Ingredient_Relation_VE11.Designer.cs">
+      <DependentUpon>202112010839540_Recipe_Ingredient_Relation_VE11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112010908091_FullMigrationVE1.cs" />
+    <Compile Include="Migrations\202112010908091_FullMigrationVE1.Designer.cs">
+      <DependentUpon>202112010908091_FullMigrationVE1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="MyTestController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -267,6 +285,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\MyTest\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +324,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111301509224_IngredientsVE1.resx">
       <DependentUpon>202111301509224_IngredientsVE1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112010755145_Category_Ingredient_Relation_VE1.resx">
+      <DependentUpon>202112010755145_Category_Ingredient_Relation_VE1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112010826219_Recipe_Ingredient_Relation_VE1.resx">
+      <DependentUpon>202112010826219_Recipe_Ingredient_Relation_VE1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112010839540_Recipe_Ingredient_Relation_VE11.resx">
+      <DependentUpon>202112010839540_Recipe_Ingredient_Relation_VE11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112010908091_FullMigrationVE1.resx">
+      <DependentUpon>202112010908091_FullMigrationVE1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
