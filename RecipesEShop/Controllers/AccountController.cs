@@ -22,6 +22,8 @@ namespace RecipesEShop.Controllers
         {
         }
 
+        
+
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
@@ -53,6 +55,12 @@ namespace RecipesEShop.Controllers
         }
 
         //
+        // GET: /Account/Index
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
