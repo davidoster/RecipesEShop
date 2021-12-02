@@ -15,7 +15,6 @@ namespace RecipesEShop.Models
         [StringLength(150)]
         public string Description { get; set; }
 
-
         public virtual ICollection<Ingredient> Ingredients { get; set; }
     }
 }

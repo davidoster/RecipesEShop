@@ -25,7 +25,7 @@ namespace RecipesEShop.Models
         public virtual DbSet<Recipe> Recipes { get; set; }
 
         public ApplicationDbContext()
-            : base("ServerDeveloperConnection", throwIfV1Schema: false)
+            : base("RemoteCommonSQL", throwIfV1Schema: false)
         {
         }
 
