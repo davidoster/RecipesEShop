@@ -97,12 +97,15 @@ namespace RecipesEShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
+            CategoryRepository repository = new CategoryRepository();
+            int result = repository.Delete(id);
+            //Category category = db.Categories.Find(id);
+            //if (category == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(category);
+            return View(result);
         }
 
         // POST: Categories/Delete/5

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RecipesEShop.Models.Category>
+@*@model int*@ 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @{ 
+            var finalHTML = "<ol>";
+            foreach(var category in Model)
+            {
+                finalHTML += "<li>"+ category.Name + " " 
+                    + category.Description + "</li>";
+            }
+            finalHTML += "</ol>";
+        }
+        @Html.Raw(finalHTML)
+    </div>
+</body>
+</html>
