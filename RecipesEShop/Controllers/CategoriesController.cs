@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RecipesEShop.Models;
+using RecipesEShop.Repositories;
 
 namespace RecipesEShop.Controllers
 {
@@ -109,9 +110,11 @@ namespace RecipesEShop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
+            //Category category = db.Categories.Find(id);
+            //db.Categories.Remove(category);
+            //db.SaveChanges();
+            CategoryRepository repository = new CategoryRepository();
+            repository.Delete(id);
             return RedirectToAction("Index");
         }
 
