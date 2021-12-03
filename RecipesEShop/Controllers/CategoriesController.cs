@@ -72,6 +72,7 @@ namespace RecipesEShop.Controllers
                 return HttpNotFound();
             }
             return View(category);
+
         }
 
         // POST: Categories/Edit/5
@@ -98,14 +99,18 @@ namespace RecipesEShop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             CategoryRepository repository = new CategoryRepository();
-            int result = repository.Delete(id);
+            if (repository.Delete(id) == 0)
+            {
+                
+                return View("DefaultIndex");
+            }
             //Category category = db.Categories.Find(id);
             //if (category == null)
             //{
             //    return HttpNotFound();
             //}
             //return View(category);
-            return View(result);
+            return View();
         }
 
         // POST: Categories/Delete/5
@@ -116,10 +121,12 @@ namespace RecipesEShop.Controllers
             //Category category = db.Categories.Find(id);
             //db.Categories.Remove(category);
             //db.SaveChanges();
-            CategoryRepository repository = new CategoryRepository();
-            repository.Delete(id);
+            //CategoryRepository repository = new CategoryRepository();
+            //repository.Delete(id);
             return RedirectToAction("Index");
         }
+
+
 
         protected override void Dispose(bool disposing)
         {

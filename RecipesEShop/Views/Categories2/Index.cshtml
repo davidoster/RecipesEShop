@@ -18,7 +18,7 @@
             foreach(var category in Model)
             {
                 finalHTML += "<li>"+ category.Name + " " 
-                    + category.Description + "</li>";
+                    + category.Description + Html.ActionLink("Delete", "Delete", new { id = category.Name }) + "</li>";
             }
             finalHTML += "</ol>";
         }

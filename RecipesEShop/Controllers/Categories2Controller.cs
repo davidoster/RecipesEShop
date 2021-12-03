@@ -3,6 +3,7 @@ using RecipesEShop.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,11 +19,39 @@ namespace RecipesEShop.Controllers
             return View(db.Categories.ToList());
         }
 
-        public ViewResult Delete(string Id)
+        // GET: Categories/Delete/5
+        public ActionResult Delete(string id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             CategoryRepository repository = new CategoryRepository();
-            int result = repository.Delete(Id);
-            return View("Index");
+            if (repository.Delete(id) == 0)
+            {
+
+                return View("DefaultIndex");
+            }
+            //Category category = db.Categories.Find(id);
+            //if (category == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(category);
+            return View();
+        }
+
+        // POST: Categories/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            //Category category = db.Categories.Find(id);
+            //db.Categories.Remove(category);
+            //db.SaveChanges();
+            //CategoryRepository repository = new CategoryRepository();
+            //repository.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

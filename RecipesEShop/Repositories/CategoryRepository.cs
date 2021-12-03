@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace RecipesEShop.Repositories
 {
     public class CategoryRepository : ICategoryRepository
@@ -14,13 +15,16 @@ namespace RecipesEShop.Repositories
             ApplicationDbContext context = new ApplicationDbContext();
             var db = context.Categories;
             var category = db.Find(Id);
-            if(category != null)
+            try
             {
                 db.Remove(category);
                 context.SaveChanges();
                 result = 1;
             }
-            
+            catch (Exception e)
+            {
+                return (result);
+            }
             return (result);
         }
 

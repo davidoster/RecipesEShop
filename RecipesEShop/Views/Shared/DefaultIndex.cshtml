@@ -17,7 +17,13 @@
     <div>
         <h1 class="text-danger">Error.</h1>
         <h2 class="text-danger">An error occurred while processing your request.</h2>
-        @RenderBody()
-    </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="Back to Categories" class="btn btn-default" />
+
+            </div>
+        }
 </body>
 </html>
