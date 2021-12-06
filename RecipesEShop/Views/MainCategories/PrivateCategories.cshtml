@@ -2,13 +2,16 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-    <ul>
-        @foreach (var item in Model)
-        {
-            <li>@item.Name @item.Description <a href="/MainCategories/Edit/@item.Name">Edit</a></li>
-        }
-    </ul>
+@*model -- property of type....(see the @model above), Model -- values from Controller *@
+<ul>
+    @Html.DisplayNameFor(model => model.Name)-@Html.DisplayNameFor(model => model.Description)
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.DisplayFor(model => item.Name)-@Html.DisplayFor(model => item.Description) @Html.ActionLink("Edit", "Edit", new { id = item.Name })
+        </li>
+    }
+</ul>
 
 
 
