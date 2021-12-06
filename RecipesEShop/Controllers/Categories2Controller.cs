@@ -14,7 +14,12 @@ namespace RecipesEShop.Controllers
 
         public ActionResult Index()
         {
-
+            ViewBag.Title = "Categories2";
+            ViewBag.Koukou = new Category() { Name = "AAAA" };
+            ViewBag.KoukouNumber = 24;
+            ViewBag.Koukou = 1;
+            ViewData.Add("staticCategory", new Category() { Name="AAAA" });
+            ViewBag.CategoriesCount = db.Categories.Count();
             return View(db.Categories.ToList());
         }
 

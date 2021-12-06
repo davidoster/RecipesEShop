@@ -1,28 +1,25 @@
 ﻿@model IEnumerable<RecipesEShop.Models.Category>
-@*@model int*@ 
 @{
-    Layout = null;
+    //Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title += "2";
+    ViewBag.KoukouNumber += 10;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
+    <h2>Number of Categories: @ViewBag.CategoriesCount</h2>
     <div>
         @{ 
             var finalHTML = "<ol>";
             foreach(var category in Model)
             {
-                finalHTML += "<li>"+ category.Name + " " 
+                finalHTML += "<li>"+ category.Name + " "
                     + category.Description + "</li>";
             }
             finalHTML += "</ol>";
         }
         @Html.Raw(finalHTML)
+        <p>@ViewBag.Koukou</p>
+        <div>@ViewBag.KoukouNumber</div>
+        @ViewBag.staticCategory.Name
     </div>
-</body>
-</html>
+
