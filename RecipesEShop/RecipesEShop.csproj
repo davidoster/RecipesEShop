@@ -171,6 +171,8 @@
     <Compile Include="Controllers\Categories2Controller.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KoukouController.cs" />
+    <Compile Include="Controllers\MainCategoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,6 +261,9 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories2\Index.cshtml" />
     <Content Include="Views\Categories2\MyTest.cshtml" />
+    <Content Include="Views\Koukou\Index.cshtml" />
+    <Content Include="Views\MainCategories\PublicCategories.cshtml" />
+    <Content Include="Views\MainCategories\PrivateCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

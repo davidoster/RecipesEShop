@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    ViewBag.AMKA = 14047300612;
+    <p>Hello!</p>
+    <p>Your AMKA is: @ViewBag.AMKA</p>
+}
+
+
+
+
