@@ -1,0 +1,19 @@
+﻿@model RecipesEShop.Models.Category
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Create a new @Html.DisplayNameForModel()</h3>
+
+
+@Html.DisplayNameFor(model => model.Name)
+@Html.EditorFor(model => model.Name)
+<br />
+@Html.DisplayNameFor(model => model.Description)
+@Html.EditorFor(model => model.Description)
+
+<div id="results"></div>
+@section scripts
+{
+    <script src="~/Scripts/categories.js"></script>
+}

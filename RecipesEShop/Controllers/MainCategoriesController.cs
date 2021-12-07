@@ -28,5 +28,24 @@ namespace RecipesEShop.Controllers
             else
                 return View(db.Categories.ToList());
         }
+
+        public ActionResult New()
+        {
+            Category c = new Category() { Name = "AAAA", Description = "AAAA" };
+            return View(c);
+        }
+
+        public bool CheckCategoryExistence(string category)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var result = db.Categories.Where(item => item.Name == category).FirstOrDefault();
+            if(result != null)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
     }
 }
