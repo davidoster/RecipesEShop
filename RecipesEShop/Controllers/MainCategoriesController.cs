@@ -7,11 +7,11 @@ using System.Web.Mvc;
 
 namespace RecipesEShop.Controllers
 {
-    public class MainCategoriesController: Controller
+    public class MainCategoriesController : Controller
     {
         public ActionResult Index()
         {
-            if(!Request.IsAuthenticated) return RedirectToAction("PublicCategories");
+            if (!Request.IsAuthenticated) return RedirectToAction("PublicCategories");
             return RedirectToAction("PrivateCategories");
         }
 
@@ -35,17 +35,28 @@ namespace RecipesEShop.Controllers
             return View(c);
         }
 
+        [HttpPost]
+        public ActionResult New(Category c)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            db.Categories.Add(c);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public bool CheckCategoryExistence(string category)
         {
             ApplicationDbContext db = new ApplicationDbContext();
             var result = db.Categories.Where(item => item.Name == category).FirstOrDefault();
-            if(result != null)
+            if (result != null)
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
         }
+
     }
 }

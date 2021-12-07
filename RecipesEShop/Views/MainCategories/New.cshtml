@@ -1,16 +1,27 @@
-﻿@model RecipesEShop.Models.Category
+﻿
+@model RecipesEShop.Models.Category
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .errordata {
+        color: #ff5000;
+    }
+</style>
 <h3>Create a new @Html.DisplayNameForModel()</h3>
 
-
-@Html.DisplayNameFor(model => model.Name)
-@Html.EditorFor(model => model.Name)
-<br />
-@Html.DisplayNameFor(model => model.Description)
-@Html.EditorFor(model => model.Description)
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    <br />
+    @Html.DisplayNameFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+    <br />
+    <input type="submit" name="Create Category" />
+    Html.EndForm();
+}
 
 <div id="results"></div>
 @section scripts
