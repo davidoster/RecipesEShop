@@ -10,6 +10,8 @@
     {
         <li>
             @Html.DisplayFor(model => item.Name)-@Html.DisplayFor(model => item.Description)
+            @Html.ActionLink("Edit", "Edit", new { key = item.Name })
+            @Html.ActionLink("Delete", "Delete", new { key = item.Name })
         </li>
     }
 </ul>

@@ -1,0 +1,18 @@
+﻿@model RecipesEShop.Models.Category
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Edit this Category</h3>
+@using (Html.BeginForm())
+{
+    @*@Html.DisplayNameFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)*@
+    <input type="text" value="@Model.Name" hidden name="oldId"/>
+    <br />
+    @Html.DisplayNameFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+    <br />
+    <input type="submit" name="Create Category" />
+    Html.EndForm();
+}
+

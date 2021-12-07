@@ -58,5 +58,32 @@ namespace RecipesEShop.Controllers
             }
         }
 
+        public ActionResult Delete(string key)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var c = db.Categories.Find(key);
+            db.Categories.Remove(c);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // Edit - Update
+        public ViewResult Edit(string key)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var c = db.Categories.Find(key);
+            return View(c);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CategoryDTO c)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var targetCategory = db.Categories.Find(c.oldId);
+            //targetCategory.Name = c.Name; --- DO NOT CHANGE THE PK or you will DIE!!!!
+            targetCategory.Description = c.Description;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
