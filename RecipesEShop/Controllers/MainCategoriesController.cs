@@ -85,5 +85,10 @@ namespace RecipesEShop.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ViewResult SampleView()
+        {
+            return View();
+        }
     }
 }

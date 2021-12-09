@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Sample View";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div><span>QQQQQQ -</span>@Html.Partial("_SampleViewHeaderPartialPage")<span>LL -</span></div>
+    <div>@{<span>QQQQQQ -</span>Html.RenderPartial("_SampleViewHeaderPartialPage");<span>LL -</span> }</div>
+    <div>
+
+    </div>
+    @Html.Partial("_PartialFooterPage1")
+    @RenderPage("~/Views/Account/Register.cshtml")
+</body>
+</html>
