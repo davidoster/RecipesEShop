@@ -55,13 +55,13 @@
                         }
                     </select>
                     <p>Select the ingredients you need for this Category:</p>
+                    
                     <div id="categoryIngredients"></div>
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1"> I have a bike</label><br>
-                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                    <label for="vehicle2"> I have a car</label><br>
-                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                    <label for="vehicle3"> I have a boat</label><br><br>
+
+                    <select id="Ingredients" name="@Html.NameFor(model => model.Ingredients)">
+                        <option id="Carrot" name="@Html.NameFor(model => model.Ingredients.Where(m => m.Name == "Carrot").FirstOrDefault())" value="@Html.NameFor(model => model.Ingredients.Where(m => m.Name == "Carrot").FirstOrDefault())">Carrot</option>
+                        <option id="Asparagus" name="@Html.NameFor(model => model.Ingredients.Where(m => m.Name == "Asparagus").FirstOrDefault())" value="@Html.NameFor(model => model.Ingredients.Where(m => m.Name == "Asparagus").FirstOrDefault())">Asparagus</option>
+                    </select>
                 }
             </div>
 

@@ -1,25 +1,33 @@
 ﻿function getIngredientsByCategory() {
     var categorySelect = document.getElementById("categorySelect");
+    var categoryIngredients = document.getElementById("categoryIngredients");
     var categoryIndex = categorySelect.selectedIndex;
     var categoryValue = categorySelect.value;
-    console.log("Index: " + categoryIndex + " Value: " + categoryValue);
-    var targetUrl = window.location.protocol + "//" + window.location.hostname + ":" + + window.location.port + "/Categories/Details/" + categoryValue;
-    console.log(targetUrl);
-    //$.ajax({
-    //    url: @Url.Action("/Categories/Details/" + categoryValue)
+    //console.log("Index: " + categoryIndex + " Value: " + categoryValue);
+    var targetUrl = window.location.protocol + "//" + window.location.hostname + ":" + + window.location.port + "/api/Categories/" + categoryValue;
+    //console.log(targetUrl);
+    $.ajax({
+        url: targetUrl
 
-    //}).done(function (returnedData) {
-    //    console.log(returnedData);
-    //    if (returnedData == 'True') {
-    //        results.innerHTML = "<h4 class='errordata'>Error: This category name exists!</h4>";
-    //    } else {
-    //        results.innerHTML = "<h4>This category name is available!</h4>";
-    //        //var button = '<input type="submit" name="Create Category" />';
-    //        //var myForm = document.getElementsByTagName("form")[0].innerHTML;
-    //        //console.log(myForm);
-    //        //myForm += button;
-    //    }
+    }).done(function (returnedData) {
+        //console.log(returnedData);
+        categoryIngredients.innerHTML = "";
+        if (!returnedData.Ingredients) {
+            categoryIngredients.innerHTML = "<p>No Ingredients Found</p>";
+        } else {
+            if (returnedData.Ingredients.length == 0) {
+                categoryIngredients.innerHTML = "<p>No Ingredients Found</p>";
+            } else {
+                for (item of returnedData.Ingredients) {
+                    categoryIngredients.innerHTML += createCheckBox(item.Name, item.Name, item.Description);
+                }
+            }
+        }
+    });
+}
 
-    //    // display this returned data on a div.....
-    //});
+function createCheckBox(id, name, description) {
+    let checkBox = `<input type="checkbox" id="${id}" name="${name}" value="${name}">
+    <label for="${id}"> ${description}</label><br>`;
+    return (checkBox);
 }
