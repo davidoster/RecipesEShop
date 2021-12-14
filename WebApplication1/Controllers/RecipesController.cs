@@ -17,6 +17,7 @@ namespace WebApplication1.Controllers
         // GET: Recipes
         public ActionResult Index()
         {
+            ViewBag.Ingredients = new List<Ingredient>() { };
             return View(db.Recipes.ToList());
         }
 
@@ -46,8 +47,9 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Description,Ingredients")] Recipe recipe)
+        public ActionResult Create([Bind(Include = "Name,Description")] Recipe recipe, ICollection<Ingredient> ingredients)
         {
+            recipe.Ingredients = ingredients;
             if (ModelState.IsValid)
             {
                 db.Recipes.Add(recipe);
