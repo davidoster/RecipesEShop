@@ -39,6 +39,7 @@ namespace WebApplication1.Controllers
         // GET: Recipes/Create
         public ActionResult Create()
         {
+            ViewBag.selectedIngredients = null;
             return View(); // View(myObject) ----> at the view myObject is Model
         }
 
@@ -47,9 +48,9 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Description")] Recipe recipe, ICollection<Ingredient> ingredients)
+        public ActionResult Create([Bind(Include = "Name,Description")] Recipe recipe, string[] selectedIngredients)
         {
-            recipe.Ingredients = ingredients;
+            selectedIngredients.ToList().ForEach(s => recipe.Ingredients.Add(db.Ingredients.Find(s)));
             if (ModelState.IsValid)
             {
                 db.Recipes.Add(recipe);

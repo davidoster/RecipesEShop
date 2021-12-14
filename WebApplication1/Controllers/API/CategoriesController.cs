@@ -103,7 +103,8 @@ namespace WebApplication1.Controllers.API
         // DELETE: api/Categories/5
         [ResponseType(typeof(Category))]
         public IHttpActionResult DeleteCategory(string id)
-        {
+        {		
+
             Category category = db.Categories.Find(id);
             if (category == null)
             {
