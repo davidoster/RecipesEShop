@@ -12,11 +12,13 @@ using EntityBuilding.Models;
 
 namespace WebApplication1.Controllers.API
 {
+    [Authorize]
     public class CategoriesController : ApiController
     {
         private RecipesModel db = new RecipesModel();
 
         // GET: api/Categories
+        [AllowAnonymous]
         public IEnumerable<Category> GetCategories()
         {
             return db.Categories.ToList();
