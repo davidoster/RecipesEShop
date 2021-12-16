@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Text;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using EntityBuilding.Models;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers.API
 {
@@ -24,17 +27,51 @@ namespace WebApplication1.Controllers.API
             return db.Categories.ToList();
         }
 
+        [AllowAnonymous]
+        public IHttpActionResult OptionsCategory()
+        {
+            var x = Request.Headers.Authorization.Parameter;
+            var credentials = Encoding.Default.GetString(Convert.FromBase64String(x));
+            var creds2 = credentials.Split(':');
+            return Ok(creds2);
+        }
+
         // GET: api/Categories/5
+        [AllowAnonymous]
         [ResponseType(typeof(Category))]
         public IHttpActionResult GetCategory(string id)
         {
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Category category = null;
+            if (Request.Headers.Authorization != null)
             {
-                return NotFound();
-            }
+                var x = Encoding.Default.GetString(Convert.FromBase64String(Request.Headers.Authorization.Parameter));
+                var y = x.Split(':');
+                string email = y[0], password = y[1];
 
-            return Ok(category);
+                // how can I login here??????????????
+                // Make a method that makes a connection to the Db and asks from the table Users..... about the credentials, if they are ok!!!!
+                /// Easy Peasy!!!!
+
+                if (CheckUserCredentials(email, password))
+                {
+                    category = db.Categories.Find(id);
+                    if (category == null)
+                    {
+                        return NotFound();
+                    }
+                    return Ok(category);
+                }
+            }
+            return BadRequest("Invalid credentials and/or non existent category");
+        }
+
+        private bool CheckUserCredentials(string username, string password)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            PasswordHasher passwordHasher = new PasswordHasher();
+            var hashedPassword = db.Users.Where(u => u.Email == username).Select(u => u.PasswordHash).FirstOrDefault();
+            var result = passwordHasher.VerifyHashedPassword(hashedPassword, password);
+            return (result == PasswordVerificationResult.Success ? true : false);
         }
 
         // PUT: api/Categories/5
@@ -105,7 +142,7 @@ namespace WebApplication1.Controllers.API
         // DELETE: api/Categories/5
         [ResponseType(typeof(Category))]
         public IHttpActionResult DeleteCategory(string id)
-        {		
+        {
 
             Category category = db.Categories.Find(id);
             if (category == null)
