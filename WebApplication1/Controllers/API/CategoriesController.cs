@@ -167,5 +167,10 @@ namespace WebApplication1.Controllers.API
         {
             return db.Categories.Count(e => e.Name == id) > 0;
         }
+
+        public int Sum(int a, int b)
+        {
+            return (a + b);
+        }
     }
 }

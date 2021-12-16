@@ -276,6 +276,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\bootstrap5\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
