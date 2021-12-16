@@ -41,7 +41,6 @@ namespace WebApplication1.Controllers.API
         [ResponseType(typeof(Category))]
         public IHttpActionResult GetCategory(string id)
         {
-            Category category = null;
             if (Request.Headers.Authorization != null)
             {
                 var x = Encoding.Default.GetString(Convert.FromBase64String(Request.Headers.Authorization.Parameter));
@@ -54,12 +53,11 @@ namespace WebApplication1.Controllers.API
 
                 if (CheckUserCredentials(email, password))
                 {
-                    category = db.Categories.Find(id);
-                    if (category == null)
+                    if (!CategoryExists(id))
                     {
                         return NotFound();
                     }
-                    return Ok(category);
+                    return Ok(db.Categories.Find(id));
                 }
             }
             return BadRequest("Invalid credentials and/or non existent category");
@@ -71,7 +69,7 @@ namespace WebApplication1.Controllers.API
             PasswordHasher passwordHasher = new PasswordHasher();
             var hashedPassword = db.Users.Where(u => u.Email == username).Select(u => u.PasswordHash).FirstOrDefault();
             var result = passwordHasher.VerifyHashedPassword(hashedPassword, password);
-            return (result == PasswordVerificationResult.Success ? true : false);
+            return (result == PasswordVerificationResult.Success);
         }
 
         // PUT: api/Categories/5
